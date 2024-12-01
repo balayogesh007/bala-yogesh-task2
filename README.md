@@ -44,7 +44,10 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-
+## Postman Collection
+```bash
+Added postman collection json in project main directory
+```
 ## Run tests
 
 ```bash
