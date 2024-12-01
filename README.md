@@ -45,9 +45,9 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 ## Postman Collection
-```bash
 Added postman collection json in project main directory
-```
+Check out the [Postman Documenttation](https://documenter.getpostman.com/view/38918032/2sAYBYfAaL)
+
 ## Run tests
 
 ```bash
