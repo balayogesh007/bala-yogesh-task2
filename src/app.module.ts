@@ -6,6 +6,9 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import dbconfig from './database/dbconfig';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './modules/user/user.module';
+import { SocketModule } from './modules/socket/socket.module';
 
 @Module({
   imports: [
@@ -21,6 +24,9 @@ import dbconfig from './database/dbconfig';
       load: [dbconfig],
     }),
     DatabaseModule,
+    AuthModule,
+    UserModule,
+    SocketModule
   ],
   controllers: [AppController],
   providers: [AppService],

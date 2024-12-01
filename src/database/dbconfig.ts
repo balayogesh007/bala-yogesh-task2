@@ -1,7 +1,6 @@
 import { registerAs } from '@nestjs/config';
 import { join } from 'path';
 import devconfig from './devconfig';
-// import { CognitoService } from 'src/aws/cognito/cognito.service';
 
 export default registerAs('typeOrmConfig', async () => {
   const nodeEnv = process.env.NODE_ENV || 'development';

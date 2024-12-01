@@ -1,39 +1,45 @@
-import { ObjectType, Field  } from '@nestjs/graphql';
+import { ObjectType, Field, registerEnumType } from '@nestjs/graphql';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  OneToMany,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { UserRole } from './user-role.entity';
+import { User } from './user.entity';
+
+export enum UserRoleEnum {
+  ADMIN = 'Admin',
+  USER = 'User',
+}
+
+registerEnumType(UserRoleEnum, {
+  name: 'UserRoleEnum',
+});
 
 @ObjectType()
-@Entity({ name: 'users' })
-export class User {
+@Entity({ name: 'user_roles' })
+export class UserRole {
   @PrimaryGeneratedColumn('uuid', { name: 'id' })
   @Field()
   id: string;
 
-  @Column({ name: 'first_name' })
+  @Column({ name: 'user_id' })
   @Field()
-  firstName: string;
+  userId: string;
 
-  @Column({ name: 'last_name' })
-  @Field()
-  lastName: string;
-
-  @Column({ name: 'email_id', unique: true })
-  @Field()
-  emailId: string;
-
-  @OneToMany(() => UserRole, (role) => role.user, {
-    cascade: true,
+  @ManyToOne(() => User, {
+    onDelete: 'CASCADE'
   })
-  @Field(() => [UserRole])
-  userRoles: UserRole[];
+  @JoinColumn({ name: 'user_id' })
+  user: User;
+
+  @Column({ name: 'user_role', type: 'enum', enum: UserRoleEnum })
+  @Field(() => UserRoleEnum)
+  userRole: UserRoleEnum;
 
   @CreateDateColumn({
     type: 'timestamptz',

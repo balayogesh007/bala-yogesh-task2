@@ -1,0 +1,51 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserRole {
+  id: String!
+  userId: String!
+  userRole: UserRoleEnum!
+}
+
+enum UserRoleEnum {
+  ADMIN
+  USER
+}
+
+type User {
+  id: String!
+  firstName: String!
+  lastName: String!
+  emailId: String!
+  userRoles: [UserRole!]!
+}
+
+type SignInResponse {
+  token: String!
+}
+
+type Query {
+  signIn(emailId: String!): SignInResponse!
+  getAllUsers: [User!]!
+  getUserDetail(id: String!): User!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: String!): String!
+}
+
+input CreateUserInput {
+  firstName: String!
+  lastName: String!
+  emailId: String!
+}
+
+input UpdateUserInput {
+  firstName: String
+  lastName: String
+  emailId: String
+  id: String!
+}
