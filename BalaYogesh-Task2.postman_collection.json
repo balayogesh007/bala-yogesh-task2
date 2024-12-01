@@ -1,0 +1,411 @@
+{
+	"info": {
+		"_postman_id": "c8a495e4-1e19-46a5-80b6-c76488e4fa76",
+		"name": "BalaYogesh-Task2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39676171"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Mutation",
+					"item": [
+						{
+							"name": "CreateUser",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation Createuser($createuserInput: CreateUserInput!){\r\n  \tcreateUser(createUserInput: $createuserInput){\r\n    id\r\n    emailId\r\n    firstName\r\n    lastName\r\n    userRoles{\r\n      id\r\n      userRole\r\n    }\r\n  }\r\n}",
+										"variables": "{\r\n  \"createuserInput\":  {\r\n    \"emailId\": \"bala@mailinator.com\",\r\n    \"firstName\": \"Bala\",\r\n    \"lastName\": \"Yogesh\"\r\n  }\r\n}"
+									}
+								},
+								"url": {
+									"raw": "{{graphql}}",
+									"host": [
+										"{{graphql}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateUser",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{graphql}}",
+									"host": [
+										"{{graphql}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "UpdateUserSampleResp",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation UpdateUser($updateUserInput: UpdateUserInput!){\r\n    updateUser(updateUserInput: $updateUserInput){\r\n        id\r\n        emailId\r\n        firstName\r\n        lastName\r\n    }\r\n}",
+												"variables": "{\r\n    \"updateUserInput\": {\r\n        \"id\":\"53bfa23a-6d04-4e46-83fa-5ebd52ebdded\",\r\n        \"firstName\": \"Yogesh\",\r\n        \"lastName\": \"Bala\"\r\n    }\r\n}"
+											}
+										},
+										"url": {
+											"raw": "{{graphql}}",
+											"host": [
+												"{{graphql}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "cache-control",
+											"value": "no-store"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "141"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"8d-wR1FW5SUOWn+ApOvJlTKo6cNFBw\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 01 Dec 2024 17:18:30 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"updateUser\": {\n            \"id\": \"53bfa23a-6d04-4e46-83fa-5ebd52ebdded\",\n            \"emailId\": \"bala@mailinator.com\",\n            \"firstName\": \"Yogesh\",\n            \"lastName\": \"Bala\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "DeleteUser",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "mutation RemoveUser($id: String!){\r\n    removeUser(id: $id)\r\n}",
+										"variables": "{\r\n    \"id\": \"53bfa23a-6d04-4e46-83fa-5ebd52ebdded\"\r\n}"
+									}
+								},
+								"url": {
+									"raw": "{{graphql}}",
+									"host": [
+										"{{graphql}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "DeleteUserSampleResp",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation RemoveUser($id: String!){\r\n    removeUser(id: $id)\r\n}",
+												"variables": "{\r\n    \"id\": \"53bfa23a-6d04-4e46-83fa-5ebd52ebdded\"\r\n}"
+											}
+										},
+										"url": {
+											"raw": "{{graphql}}",
+											"host": [
+												"{{graphql}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "cache-control",
+											"value": "no-store"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "47"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2f-3ojSDh+lWdPuGnvhscronaRcAdc\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 01 Dec 2024 17:20:23 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"removeUser\": \"Deleted Successfully\"\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Query",
+					"item": [
+						{
+							"name": "GetAllUsers",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "{{graphql}}",
+									"host": [
+										"{{graphql}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "GetAllUsersSampleResp",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "query GetAllUsers{\r\n  getAllUsers{\r\n    id\r\n    emailId\r\n    firstName\r\n    lastName\r\n    userRoles{\r\n      id\r\n      userRole\r\n    }\r\n  }\r\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "{{graphql}}",
+											"host": [
+												"{{graphql}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "cache-control",
+											"value": "no-store"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "499"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1f3-AhZngqg8MkHtOHYx9iLSUQZyZ5s\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 01 Dec 2024 17:10:29 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"getAllUsers\": [\n            {\n                \"id\": \"6f59bb48-7c27-48e1-9fba-d191d713d69f\",\n                \"emailId\": \"balayogeshdevadmin@mailinator.com\",\n                \"firstName\": \"BalaYogesh\",\n                \"lastName\": \"Dev\",\n                \"userRoles\": [\n                    {\n                        \"id\": \"324a2e1a-1bf9-4696-b8f4-4d1656e35845\",\n                        \"userRole\": \"ADMIN\"\n                    },\n                    {\n                        \"id\": \"5d3d4b53-d479-4190-8064-64a1759b3fdf\",\n                        \"userRole\": \"USER\"\n                    }\n                ]\n            },\n            {\n                \"id\": \"53bfa23a-6d04-4e46-83fa-5ebd52ebdded\",\n                \"emailId\": \"bala@mailinator.com\",\n                \"firstName\": \"Bala\",\n                \"lastName\": \"Yogesh\",\n                \"userRoles\": [\n                    {\n                        \"id\": \"589b05e1-c0d3-4b30-852a-b6abc5c2abea\",\n                        \"userRole\": \"USER\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "GetUserDetail",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query GetUserDetail($id: String!){\r\n  getUserDetail(id: $id){\r\n    id\r\n    emailId\r\n    firstName\r\n    lastName\r\n    userRoles{\r\n      id\r\n      userRole\r\n    }\r\n  }\r\n}",
+										"variables": "{\r\n    \"id\": \"6f59bb48-7c27-48e1-9fba-d191d713d69f\"\r\n}"
+									}
+								},
+								"url": {
+									"raw": "{{graphql}}",
+									"host": [
+										"{{graphql}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "GetUserDetailSampleResp",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "query GetUserDetail($id: String!){\r\n  getUserDetail(id: $id){\r\n    id\r\n    emailId\r\n    firstName\r\n    lastName\r\n    userRoles{\r\n      id\r\n      userRole\r\n    }\r\n  }\r\n}",
+												"variables": "{\r\n    \"id\": \"6f59bb48-7c27-48e1-9fba-d191d713d69f\"\r\n}"
+											}
+										},
+										"url": {
+											"raw": "{{graphql}}",
+											"host": [
+												"{{graphql}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "cache-control",
+											"value": "no-store"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "304"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"130-Y39GE4xQBuzCVQzDf5qkq4IJSm8\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 01 Dec 2024 17:12:37 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"getUserDetail\": {\n            \"id\": \"6f59bb48-7c27-48e1-9fba-d191d713d69f\",\n            \"emailId\": \"balayogeshdevadmin@mailinator.com\",\n            \"firstName\": \"BalaYogesh\",\n            \"lastName\": \"Dev\",\n            \"userRoles\": [\n                {\n                    \"id\": \"324a2e1a-1bf9-4696-b8f4-4d1656e35845\",\n                    \"userRole\": \"ADMIN\"\n                },\n                {\n                    \"id\": \"5d3d4b53-d479-4190-8064-64a1759b3fdf\",\n                    \"userRole\": \"USER\"\n                }\n            ]\n        }\n    }\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbElkIjoiYmFsYXlvZ2VzaGRldmFkbWluQG1haWxpbmF0b3IuY29tIiwiZXhwIjoxNzMzMDc3MDgxLCJpYXQiOjE3MzMwNzM0ODF9.f3YvYxmSB8HHiK4Ci3UAyG3SY0Fkx5fnaA5rgFP_QXg",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
