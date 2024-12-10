@@ -1,5 +1,6 @@
 import { Logger } from '@nestjs/common';
 import {
+  ConnectedSocket,
   MessageBody,
   OnGatewayConnection,
   OnGatewayInit,
@@ -9,30 +10,44 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 
-@WebSocketGateway({ namespace: 'events' })
+@WebSocketGateway({
+  cors: {
+    origin: '*',
+  },
+})
 export class SocketGateway implements OnGatewayConnection, OnGatewayInit {
   public connectedClients: Set<Socket> = new Set<Socket>();
 
   @WebSocketServer()
-  private server: Server;
+  private readonly server: Server;
 
   afterInit(server: Server) {
     Logger.log('Websocket Connected');
-    server.on('connection', (socket) => {
-      Logger.log(socket);
-    });
   }
 
   handleConnection(client: any) {
     this.connectedClients.add(client);
   }
 
+  @SubscribeMessage('events')
+  handleEvent(@MessageBody() data: string): string {
+    this.server.emit('events', data);
+    return data;
+  }
+
   @SubscribeMessage('sendMessage')
-  sendMessage(@MessageBody() data: string) {
-    console.log('SendMessage', data);
-    this.server.emit('Event Emitted', {
-      message: 'OnMessage',
-      content: data,
-    });
+  async sendMessage(@MessageBody() data: string) {
+    console.log('SendMessage', JSON.stringify(data));
+    this.server.to('Room1').emit('sendMessage', data);
+  }
+
+  @SubscribeMessage('join_room')
+  async handleJoinRoom(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() payload: { userId: string },
+  ) {
+    Logger.debug(client?.id);
+    this.server.in(client?.id).socketsJoin('Room1');
+    Logger.log('Client->', client, 'Message Body ->', payload);
   }
 }
